@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel Administracyjny{% endblock %}
+
+{% block content %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <h2 class="text-center mt-3">Ostatnie transakcje</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Id transakcji</th>
+                <th scope="col">Produkt</th>
+                <th scope="col">Kupujący</th>
+                <th scope="col">Sprzedający</th>
+                <th scope="col">Data transakcji</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <th scope="row">{{ transaction.id }}</th>
+                    <td>{{ transaction.item.name }}</td>
+                    <td>{{ transaction.buyer.username }}</td>
+                    <td>{{ transaction.seller.username }}</td>
+                    <td>{{ transaction.date|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

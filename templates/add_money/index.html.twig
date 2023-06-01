@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj środki {% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
+                <div class="box bg-white shadow-lg p-5 rounded-1">
+                    <h2 class="text-center mb-5">Dodaj środki</h2>
+                    {%form_theme addMoneyForm 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(addMoneyForm) }}
+                    {{ form_row(addMoneyForm.amount) }}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirm">Dodaj</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="confirm">Dodaj środki</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Czy na pewno chcesz dodać środki?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                                    <button type="submit" class="btn btn-success">Dodaj</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end(addMoneyForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

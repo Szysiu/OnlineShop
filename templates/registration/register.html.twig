@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rejestracja{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9 mb-5">
+                <div class="box shadow-lg bg-white p-5 rounded-1 mb-5">
+                    <h2 class="text-center mb-5">Rejestracja</h2>
+                    {% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(registrationForm) }}
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.username) }}
+                    </div>
+                    <div class="mb3">
+                        {{ form_row(registrationForm.email) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.password.first) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.password.second) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Zarejestruj się</button>
+                    <a class="text-decoration-none text-success" href="{{ path('app_login') }}"><h6 class="text-center mt-5">Masz już konto? Zaloguj się</h6></a>
+                    {{ form_end(registrationForm) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

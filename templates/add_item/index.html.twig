@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj dowe ogłoszenie{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-xxl-6 col-xl-6 col-lg-7 col-md-9 mb-5">
+                <div class="box shadow-lg bg-white p-5 rounded-1">
+                    <h2 class="text-center mb-5">Dodaj ogłoszenie</h2>
+                    {%form_theme form 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_row(form.name) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.title) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.price) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.category) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.image) }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Dodaj</button>
+
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

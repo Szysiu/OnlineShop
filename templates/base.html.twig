@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}">
+    {% endblock %}
+
+    {% block kit %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="{{ asset('assets/js/kit.js') }}"></script>
+    {% endblock %}
+
+</head>
+<body class="bg-custom d-flex flex-column min-vh-100">
+<!--navbar-->
+<nav class="navbar navbar-expand-lg text-bg-dark" data-bs-theme="dark">
+    <div class="container">
+        <img src="https://picsum.photos/30/24" class="me-1 rounded-1" alt="logo">
+        <a class="navbar-brand" href="{{ path('app_index') }}">MyOnlineShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ path('app_index') }}">Strona główna</a>
+                </li>
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_profile') }}">Moje konto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj sie</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_admin_panel') }}">Panel admina</a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Logowanie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Rejestracja</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if app.user %}
+                <a href="{{ path('app_user_profile') }}">
+                    <img src="{{ asset('assets/images/prof.png') }}" alt="prof" class="me-3 img-fluid" width="50"
+                         height="50">
+                </a>
+                <a href="{{ path('app_add_item') }}" class="btn btn-warning me-5" type="submit">Dodaj przedmiot</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<!--navbar-->
+{% block content %}{% endblock %}
+
+<!--footer-->
+<footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+    <div class="container text-center text-light">
+        <p class="display-5 mb-3">Online Shop</p>
+        <small>&copy; Copyright by Szysiu</small>
+    </div>
+</footer>
+<!--footer-->
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>
