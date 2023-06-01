@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <a href="javascript:history.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="row d-flex justify-content-center mt-2">
+            <div class="col-lg-8">
+                <div class="card mb-3">
+                    <img src="/images/products/{{ item.image }}" class="card-img-top" alt="..." width="1200" height="500">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ item.name }}</h4>
+                        <h5 class="card-title">{{ item.price }} zł</h5>
+                        <p class="card-text">{{ item.title }}</p>
+                        <p class="card-text"><small class="text-muted">Dodał:{{ item.owner.username }}</small></p>
+                        {% if app.user and app.user != item.owner %}
+                            <a href="{{ path('app_buy_item', {'id' : item.id}) }}" class="btn btn-success">Kup</a>
+                        {% endif %}
+                        {% if app.user==item.owner %}
+                            <a href="{{ path('app_edit_item', {'id' : item.id}) }}" class="btn btn-warning me-2">Edytuj</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

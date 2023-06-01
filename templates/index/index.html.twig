@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shop{% endblock %}
+
+{% block content %}
+    <div class="container my-4">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="text-center mb-5 mt-3">Najnowsze ogłoszenia</h1>
+        {% form_theme searchForm 'bootstrap_5_layout.html.twig' %}
+        {{ form_start(searchForm) }}
+        <div class="input-group mb-4 mt-5">
+            {{ form_widget(searchForm.phrase) }}
+            <button class="btn btn-outline-success" type="submit" id="button-addon2"><img src="{{ asset('assets/images/search.png') }}" width="20" height="20" alt="search"> </button>
+        </div>
+        <div class="box d-flex justify-content-center">
+            <div class="btn-group">
+                {% for param in searchForm.params %}
+                    {{ form_widget(param, {'attr': {'class': 'btn-check'}, 'label_attr': {'class': 'btn btn-outline-secondary'}}) }}
+                {% endfor %}
+                <button class="btn btn-success" type="submit" id="button-addon3">Filtruj</button>
+            </div>
+        </div>
+
+
+        {{ form_end(searchForm) }}
+
+
+
+        <div class="row gy-4 mb-5 mt-3">
+            {% for item in items %}
+                <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-10 border-1 border-secondary">
+                    <a href="{{ path('app_show_item', {'id' : item.id}) }}" class="text-decoration-none text-dark">
+                        <div class="card h-100 border-1 border-secondary  rounded-1">
+                            <img src="/images/products/{{ item.image }}" class="card-img-top border-0 rounded-0" alt="img"
+                                 width="300" height="200">
+                            <div class="card-body card-body-custom">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.title }}</p>
+                                <p class="card-text fw-bold">{{ item.price }} zł</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

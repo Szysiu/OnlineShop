@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block content %}
+    <div class="container my-4">
+        <a href="javascript:history.back()">
+            <img src="{{ asset('/assets/images/back.png') }}" alt="back" width="50" height="50">
+        </a>
+        <div class="row gy-4 mb-5 mt-2">
+            {% for item in foundItems %}
+                <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-10 border-1 border-secondary">
+                    <a href="{{ path('app_show_item', {'id' : item.id}) }}" class="text-decoration-none text-dark">
+                        <div class="card h-100 border-0  rounded-1">
+                            <img src="/images/products/{{ item.image }}" class="card-img-top border-0" alt="..."
+                                 width="300" height="200">
+                            <div class="card-body card-body-custom">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.title }}</p>
+                                <p class="card-text fw-bold">{{ item.price }} zł</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

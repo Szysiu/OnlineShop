@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edytuj ogłoszenie{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-xxl-6 col-xl-6 col-lg-7 col-md-9 mb-5">
+                <div class="box shadow-lg bg-white p-5 rounded-1">
+                    <h2 class="text-center mb-5">Edytuj ogłoszenie</h2>
+                    {%form_theme editForm 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(editForm) }}
+                    <div class="mb-3">
+                        {{ form_row(editForm.name, {'value': item.name}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(editForm.title, {'value': item.title}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(editForm.price, {'value': item.price}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(editForm.category, {'value': item.category.name},{'choice_label' : item.category.name }) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(editForm.image) }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Zapisz</button>
+
+                    {{ form_end(editForm) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

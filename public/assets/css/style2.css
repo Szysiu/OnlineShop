@@ -1,0 +1,54 @@
+.bg-custom
+{
+    background: #f2f4f5;
+}
+
+.page-link {
+    background: #2B3035;
+    color: white;
+}
+
+.page-link:hover{
+    color:  black;
+}
+
+.border-custom {
+    border-top-right-radius:7px ;
+    border-bottom-right-radius:7px ;
+}
+
+.card-body-custom:hover{
+    background: #212529;
+    color: white;
+    transition: 0.7s;
+}
+
+.box-custom {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-label {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    color: white;
+}
+.btn-outline-secondary input{
+    display: none;
+}
+
+.btn-check.hovered + .btn-outline-secondary {
+    background-color: red;
+    color: white;
+    border-color: red;
+}
