@@ -1,4 +1,8 @@
-# OnlineShop
+# ONLINE MARKETPLACE
+
+Platform, where users can post classified ads. It includes features such as user registration/login, the ability to create, edit,search, filter and delete listings, managing account balance, and purchasing items from other users. Additionally, there is an administrative panel that keeps track of transaction history.
+
+Made with: PHP, Symfony, Javascript, MYSQL, HTML, CSS, TWIG
 
 How to run app using Docker: \
 1.Clone this repo \
