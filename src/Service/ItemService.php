@@ -219,9 +219,4 @@ class ItemService extends CategoryService
 
         return $item;
     }
-
-    private function dupa(string $dupa):void
-    {
-
-    }
 }
